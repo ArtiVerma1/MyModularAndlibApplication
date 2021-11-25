@@ -1,5 +1,6 @@
 package com.example.calccmodule.module
 
+import com.example.calccmodule.model.DataItem
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -57,4 +58,5 @@ class APIModule {
     fun provideApiImp(apiService: ApiService):ApiImp{
         return ApiImp(apiService)
     }
+
 }

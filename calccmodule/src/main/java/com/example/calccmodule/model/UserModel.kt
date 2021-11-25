@@ -1,5 +1,5 @@
 package com.example.calccmodule.model
-import com.google.gson.annotations.SerializedName
+
 data class UserModel (
 
     @field:SerializedName("per_page")

@@ -22,21 +22,23 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
     // TODO: Implement the ViewModel
     private lateinit var adapter: UserAdapter
-    private val _users = MutableLiveData<List<UserModel>>()
-    val users: LiveData<List<UserModel>>
+    private val _users = MutableLiveData<UserModel>()
+    val users: LiveData<UserModel>
         get() = _users
 
     init {
         fetchUsers()
     }
 
-    private fun fetchUsers() {
+    private fun fetchUsers() : MutableLiveData<UserModel>{
         viewModelScope.launch {
             // _users.postValue(Resource.loading(null))
 //            if (networkHelper.isNetworkConnected()) {
                 mainRepository.getUsers().let {
                     if (it.isSuccessful) {
-                        val dataResponse=it.body()
+                       // val dataResponse = response.body() as UserModel
+                        _users.postValue(it.body())
+                        val dataResponse=it.body()as UserModel
                         Log.d("TAG", "onResponse: "+dataResponse)
 
                         //_users.postValue(Resource.success(it.body()))
@@ -44,5 +46,6 @@ class MainViewModel @Inject constructor(
                // }
             }
         }
+        return _users
     }
 }

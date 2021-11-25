@@ -35,7 +35,8 @@ class MainActivity : AppCompatActivity() {
         val list : RecyclerView =findViewById(R.id.list)
         calc=Calcc()
         sum=calc.Add(3,5)
-        Toast.makeText(this,sum.toString(), Toast.LENGTH_LONG);
+        Toast.makeText(this,sum.toString(), Toast.LENGTH_LONG)
+
         mainViewModel.users.observe(this, Observer {
 
             val dataResponse=it
