@@ -5,8 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.calccmodule.model.DataItem
+
 import com.example.calccmodule.model.UserModel
 import com.example.calccmodule.module.MainRepository
 import com.example.calccmodule.module.NetworkHelper

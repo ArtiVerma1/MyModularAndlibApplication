@@ -1,5 +1,5 @@
 package com.example.calccmodule.model
-
+import com.google.gson.annotations.SerializedName
 data class UserModel (
 
     @field:SerializedName("per_page")
@@ -47,7 +47,7 @@ data class DataItem(
 
 data class Support(
     // @ColumnInfo(name = "text")
-    @field:SerializedName("text")
+   @field:SerializedName("text")
     val text: String? = null,
     // @ColumnInfo(name = "url")
     @field:SerializedName("url")

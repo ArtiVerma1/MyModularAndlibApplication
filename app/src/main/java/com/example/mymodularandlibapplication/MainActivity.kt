@@ -17,6 +17,7 @@ import com.example.mymodularandlibapplication.viewModel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Retrofit
 import javax.inject.Inject
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var calc: Calcc
@@ -42,11 +43,12 @@ class MainActivity : AppCompatActivity() {
             val dataResponse=it
             Log.d("TAG", "onResponse: "+dataResponse)
             list.layoutManager = LinearLayoutManager(applicationContext)
-            list.adapter = applicationContext?.let {
-                UserAdapter(
-                    it, usermodel?.data as List<DataItem>
-                )
-            }
+//            list.adapter = applicationContext?.let {
+//                UserAdapter(
+//                    it, usermodel?.data as List<DataItem>
+//                )
+//            }
+            adapter= UserAdapter(this, dataResponse.data as List<DataItem>)
 
         })
     }
