@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 //                    it, usermodel?.data as List<DataItem>
 //                )
 //            }
-            adapter= UserAdapter(this, dataResponse.data as List<DataItem>)
+            list.adapter= UserAdapter(this, dataResponse.data as List<DataItem>)
 
         })
     }
