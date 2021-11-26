@@ -1,5 +1,6 @@
 package com.example.calccmodule.module
 
+import android.content.Context
 import com.example.calccmodule.model.DataItem
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
@@ -7,6 +8,7 @@ import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -41,22 +43,30 @@ class APIModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
+
     @Provides
     @Singleton
-    fun provideApiHelper(retrofit: Retrofit): ApiService{
+    fun provideApiHelper(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
 
 
     @Provides
     @Singleton
-    fun provideRepository(apiService: ApiService):MainRepository{
+    fun provideRepository(apiService: ApiService): MainRepository {
         return MainRepository(apiService)
     }
+
     @Provides
     @Singleton
-    fun provideApiImp(apiService: ApiService):ApiImp{
+    fun provideApiImp(apiService: ApiService): ApiImp {
         return ApiImp(apiService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNetworkHelper(@ApplicationContext context: Context): NetworkHelper {
+        return NetworkHelper(context)
     }
 
 }
